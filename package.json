@@ -1,0 +1,21 @@
+{
+  "name": "node-red-contrib-old-lgtv",
+  "version": "0.0.1",
+  "description": "Node-RED Nodes to control OLD LG Smart TVs",
+  "main": "none",
+  "keywords": [
+    "node-red",
+    "LG",
+    "Smart",
+    "TV"
+  ],
+  "repository": "https://github.com/YanK-fr/node-red-contrib-old-lgtv",
+  "author": "Yannick Kermarec",
+  "license": "MIT",
+  "node-red": {
+    "nodes": {
+      "lgtv-config": "nodes/oldlgtv-config.js",
+      "lgtv-request": "nodes/oldlgtv-send.js"
+    }
+  }
+}
