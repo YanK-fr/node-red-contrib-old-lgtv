@@ -1,0 +1,23 @@
+<script type="text/javascript">
+    RED.nodes.registerType('oldlgtv-config',{
+        category: 'config',
+        defaults: {
+            host: {value:"localhost",required:true},
+            key:  {value:1234,required:true,validate:RED.validators.number()},
+        },
+        label: function() {
+            return this.host+" / "+this.key;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="oldlgtv-config">
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="icon-bookmark"></i> Host</label>
+        <input type="text" id="node-config-input-host">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-key"><i class="icon-bookmark"></i> Key</label>
+        <input type="text" id="node-config-input-key">
+    </div>
+</script>
