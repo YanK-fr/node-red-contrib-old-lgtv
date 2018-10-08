@@ -3,33 +3,196 @@
         category: 'oldlgtv',
         color: '#C0DEED',
         inputs: 1,
+        outputs: 1,
         defaults: {
+            name: {
+                value: null
+            },
             tv: {
                 value: '',
                 type: 'oldlgtv-config',
                 required: true
             },
             charkey: {
-                value: ''
+                value: null
+            },
+            repeat: {
+                value: 0
             }
         },
         label: function () {
-            return this.charkey || 'send';
+            return this.name || this.charkey || 'Send Key';
         },
         icon: 'oldlgtv-send.png',
-        paletteLabel: 'oldlgtv-send',
+        paletteLabel: 'Send Key',
         align: 'right'
     });
 </script>
 
 <script type="text/x-red" data-template-name="oldlgtv-send">
     <div class="form-row">
-        <label for="node-input-tv"><i class="icon-bookmark"></i> TV</label>
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-tv"><i class="fa fa-television"></i> TV</label>
         <input type="text" id="node-input-tv">
     </div>
     <div class="form-row">
-        <label for="node-input-charkey"><i class="icon-bookmark"></i> Char Key</label>
-        <input type="text" id="node-input-charkey">
+        <label for="node-input-charkey"><i class="fa fa-key"></i> Char Key</label>
+        <select id="node-input-charkey">
+            <option value="KEY_IDX_3D">KEY_IDX_3D</option>
+            <option value="KEY_IDX_ARROW_DOWN">KEY_IDX_ARROW_DOWN</option>
+            <option value="KEY_IDX_ARROW_LEFT">KEY_IDX_ARROW_LEFT</option>
+            <option value="KEY_IDX_ARROW_RIGHT">KEY_IDX_ARROW_RIGHT</option>
+            <option value="KEY_IDX_ARROW_UP">KEY_IDX_ARROW_UP</option>
+            <option value="KEY_IDX_BACK">KEY_IDX_BACK</option>
+            <option value="KEY_IDX_BLUE">KEY_IDX_BLUE</option>
+            <option value="KEY_IDX_CH_DOWN">KEY_IDX_CH_DOWN</option>
+            <option value="KEY_IDX_CH_UP">KEY_IDX_CH_UP</option>
+            <option value="KEY_IDX_DATA">KEY_IDX_DATA</option>
+            <option value="KEY_IDX_ENTER">KEY_IDX_ENTER</option>
+            <option value="KEY_IDX_EXIT">KEY_IDX_EXIT</option>
+            <option value="KEY_IDX_EXTERNAL_INPUT">KEY_IDX_EXTERNAL_INPUT</option>
+            <option value="KEY_IDX_FORWARD">KEY_IDX_FORWARD</option>
+            <option value="KEY_IDX_GAMEPAD_ARROW_DOWN">KEY_IDX_GAMEPAD_ARROW_DOWN</option>
+            <option value="KEY_IDX_GAMEPAD_ARROW_LEFT">KEY_IDX_GAMEPAD_ARROW_LEFT</option>
+            <option value="KEY_IDX_GAMEPAD_ARROW_RIGHT">KEY_IDX_GAMEPAD_ARROW_RIGHT</option>
+            <option value="KEY_IDX_GAMEPAD_ARROW_UP">KEY_IDX_GAMEPAD_ARROW_UP</option>
+            <option value="KEY_IDX_GAMEPAD_BTN_1">KEY_IDX_GAMEPAD_BTN_1</option>
+            <option value="KEY_IDX_GAMEPAD_BTN_2">KEY_IDX_GAMEPAD_BTN_2</option>
+            <option value="KEY_IDX_GAMEPAD_BTN_3">KEY_IDX_GAMEPAD_BTN_3</option>
+            <option value="KEY_IDX_GAMEPAD_BTN_4">KEY_IDX_GAMEPAD_BTN_4</option>
+            <option value="KEY_IDX_GAMEPAD_MENU">KEY_IDX_GAMEPAD_MENU</option>
+            <option value="KEY_IDX_GREEN">KEY_IDX_GREEN</option>
+            <option value="KEY_IDX_HOME">KEY_IDX_HOME</option>
+            <option value="KEY_IDX_JP_BS">KEY_IDX_JP_BS</option>
+            <option value="KEY_IDX_JP_BS_NUM_1">KEY_IDX_JP_BS_NUM_1</option>
+            <option value="KEY_IDX_JP_BS_NUM_10">KEY_IDX_JP_BS_NUM_10</option>
+            <option value="KEY_IDX_JP_BS_NUM_11">KEY_IDX_JP_BS_NUM_11</option>
+            <option value="KEY_IDX_JP_BS_NUM_12">KEY_IDX_JP_BS_NUM_12</option>
+            <option value="KEY_IDX_JP_BS_NUM_2">KEY_IDX_JP_BS_NUM_2</option>
+            <option value="KEY_IDX_JP_BS_NUM_3">KEY_IDX_JP_BS_NUM_3</option>
+            <option value="KEY_IDX_JP_BS_NUM_4">KEY_IDX_JP_BS_NUM_4</option>
+            <option value="KEY_IDX_JP_BS_NUM_5">KEY_IDX_JP_BS_NUM_5</option>
+            <option value="KEY_IDX_JP_BS_NUM_6">KEY_IDX_JP_BS_NUM_6</option>
+            <option value="KEY_IDX_JP_BS_NUM_7">KEY_IDX_JP_BS_NUM_7</option>
+            <option value="KEY_IDX_JP_BS_NUM_8">KEY_IDX_JP_BS_NUM_8</option>
+            <option value="KEY_IDX_JP_BS_NUM_9">KEY_IDX_JP_BS_NUM_9</option>
+            <option value="KEY_IDX_JP_CS1">KEY_IDX_JP_CS1</option>
+            <option value="KEY_IDX_JP_CS1_NUM_1">KEY_IDX_JP_CS1_NUM_1</option>
+            <option value="KEY_IDX_JP_CS1_NUM_10">KEY_IDX_JP_CS1_NUM_10</option>
+            <option value="KEY_IDX_JP_CS1_NUM_11">KEY_IDX_JP_CS1_NUM_11</option>
+            <option value="KEY_IDX_JP_CS1_NUM_12">KEY_IDX_JP_CS1_NUM_12</option>
+            <option value="KEY_IDX_JP_CS1_NUM_2">KEY_IDX_JP_CS1_NUM_2</option>
+            <option value="KEY_IDX_JP_CS1_NUM_3">KEY_IDX_JP_CS1_NUM_3</option>
+            <option value="KEY_IDX_JP_CS1_NUM_4">KEY_IDX_JP_CS1_NUM_4</option>
+            <option value="KEY_IDX_JP_CS1_NUM_5">KEY_IDX_JP_CS1_NUM_5</option>
+            <option value="KEY_IDX_JP_CS1_NUM_6">KEY_IDX_JP_CS1_NUM_6</option>
+            <option value="KEY_IDX_JP_CS1_NUM_7">KEY_IDX_JP_CS1_NUM_7</option>
+            <option value="KEY_IDX_JP_CS1_NUM_8">KEY_IDX_JP_CS1_NUM_8</option>
+            <option value="KEY_IDX_JP_CS1_NUM_9">KEY_IDX_JP_CS1_NUM_9</option>
+            <option value="KEY_IDX_JP_CS2">KEY_IDX_JP_CS2</option>
+            <option value="KEY_IDX_JP_CS2_NUM_1">KEY_IDX_JP_CS2_NUM_1</option>
+            <option value="KEY_IDX_JP_CS2_NUM_10">KEY_IDX_JP_CS2_NUM_10</option>
+            <option value="KEY_IDX_JP_CS2_NUM_11">KEY_IDX_JP_CS2_NUM_11</option>
+            <option value="KEY_IDX_JP_CS2_NUM_12">KEY_IDX_JP_CS2_NUM_12</option>
+            <option value="KEY_IDX_JP_CS2_NUM_2">KEY_IDX_JP_CS2_NUM_2</option>
+            <option value="KEY_IDX_JP_CS2_NUM_3">KEY_IDX_JP_CS2_NUM_3</option>
+            <option value="KEY_IDX_JP_CS2_NUM_4">KEY_IDX_JP_CS2_NUM_4</option>
+            <option value="KEY_IDX_JP_CS2_NUM_5">KEY_IDX_JP_CS2_NUM_5</option>
+            <option value="KEY_IDX_JP_CS2_NUM_6">KEY_IDX_JP_CS2_NUM_6</option>
+            <option value="KEY_IDX_JP_CS2_NUM_7">KEY_IDX_JP_CS2_NUM_7</option>
+            <option value="KEY_IDX_JP_CS2_NUM_8">KEY_IDX_JP_CS2_NUM_8</option>
+            <option value="KEY_IDX_JP_CS2_NUM_9">KEY_IDX_JP_CS2_NUM_9</option>
+            <option value="KEY_IDX_JP_JS">KEY_IDX_JP_JS</option>
+            <option value="KEY_IDX_JP_JS_NUM_1">KEY_IDX_JP_JS_NUM_1</option>
+            <option value="KEY_IDX_JP_JS_NUM_10">KEY_IDX_JP_JS_NUM_10</option>
+            <option value="KEY_IDX_JP_JS_NUM_11">KEY_IDX_JP_JS_NUM_11</option>
+            <option value="KEY_IDX_JP_JS_NUM_12">KEY_IDX_JP_JS_NUM_12</option>
+            <option value="KEY_IDX_JP_JS_NUM_2">KEY_IDX_JP_JS_NUM_2</option>
+            <option value="KEY_IDX_JP_JS_NUM_3">KEY_IDX_JP_JS_NUM_3</option>
+            <option value="KEY_IDX_JP_JS_NUM_4">KEY_IDX_JP_JS_NUM_4</option>
+            <option value="KEY_IDX_JP_JS_NUM_5">KEY_IDX_JP_JS_NUM_5</option>
+            <option value="KEY_IDX_JP_JS_NUM_6">KEY_IDX_JP_JS_NUM_6</option>
+            <option value="KEY_IDX_JP_JS_NUM_7">KEY_IDX_JP_JS_NUM_7</option>
+            <option value="KEY_IDX_JP_JS_NUM_8">KEY_IDX_JP_JS_NUM_8</option>
+            <option value="KEY_IDX_JP_JS_NUM_9">KEY_IDX_JP_JS_NUM_9</option>
+            <option value="KEY_IDX_MENU">KEY_IDX_MENU</option>
+            <option value="KEY_IDX_MUTE">KEY_IDX_MUTE</option>
+            <option value="KEY_IDX_MYAPPS">KEY_IDX_MYAPPS</option>
+            <option value="KEY_IDX_NETCAST">KEY_IDX_NETCAST</option>
+            <option value="KEY_IDX_NUM_0">KEY_IDX_NUM_0</option>
+            <option value="KEY_IDX_NUM_1">KEY_IDX_NUM_1</option>
+            <option value="KEY_IDX_NUM_2">KEY_IDX_NUM_2</option>
+            <option value="KEY_IDX_NUM_3">KEY_IDX_NUM_3</option>
+            <option value="KEY_IDX_NUM_4">KEY_IDX_NUM_4</option>
+            <option value="KEY_IDX_NUM_5">KEY_IDX_NUM_5</option>
+            <option value="KEY_IDX_NUM_6">KEY_IDX_NUM_6</option>
+            <option value="KEY_IDX_NUM_7">KEY_IDX_NUM_7</option>
+            <option value="KEY_IDX_NUM_8">KEY_IDX_NUM_8</option>
+            <option value="KEY_IDX_NUM_9">KEY_IDX_NUM_9</option>
+            <option value="KEY_IDX_PAUSE">KEY_IDX_PAUSE</option>
+            <option value="KEY_IDX_PLAY">KEY_IDX_PLAY</option>
+            <option value="KEY_IDX_POWER_OFF">KEY_IDX_POWER_OFF</option>
+            <option value="KEY_IDX_PREV_CHANNEL">KEY_IDX_PREV_CHANNEL</option>
+            <option value="KEY_IDX_QMENU">KEY_IDX_QMENU</option>
+            <option value="KEY_IDX_REC">KEY_IDX_REC</option>
+            <option value="KEY_IDX_RED">KEY_IDX_RED</option>
+            <option value="KEY_IDX_REWIND">KEY_IDX_REWIND</option>
+            <option value="KEY_IDX_SIMPLELINK_DISC_MENU">KEY_IDX_SIMPLELINK_DISC_MENU</option>
+            <option value="KEY_IDX_SIMPLELINK_GUIDE">KEY_IDX_SIMPLELINK_GUIDE</option>
+            <option value="KEY_IDX_SIMPLELINK_HOME">KEY_IDX_SIMPLELINK_HOME</option>
+            <option value="KEY_IDX_SIMPLELINK_INFO_MENU">KEY_IDX_SIMPLELINK_INFO_MENU</option>
+            <option value="KEY_IDX_SIMPLELINK_POWER_ONOFF">KEY_IDX_SIMPLELINK_POWER_ONOFF</option>
+            <option value="KEY_IDX_SIMPLELINK_RECLIST">KEY_IDX_SIMPLELINK_RECLIST</option>
+            <option value="KEY_IDX_SIMPLELINK_TITLE_POPUP">KEY_IDX_SIMPLELINK_TITLE_POPUP</option>
+            <option value="KEY_IDX_SKIP_BACKWARD">KEY_IDX_SKIP_BACKWARD</option>
+            <option value="KEY_IDX_SKIP_FORWARD">KEY_IDX_SKIP_FORWARD</option>
+            <option value="KEY_IDX_STB_BACK">KEY_IDX_STB_BACK</option>
+            <option value="KEY_IDX_STB_BLUE">KEY_IDX_STB_BLUE</option>
+            <option value="KEY_IDX_STB_CH_DOWN">KEY_IDX_STB_CH_DOWN</option>
+            <option value="KEY_IDX_STB_CH_UP">KEY_IDX_STB_CH_UP</option>
+            <option value="KEY_IDX_STB_DASH">KEY_IDX_STB_DASH</option>
+            <option value="KEY_IDX_STB_DOWN">KEY_IDX_STB_DOWN</option>
+            <option value="KEY_IDX_STB_EXIT">KEY_IDX_STB_EXIT</option>
+            <option value="KEY_IDX_STB_FORWARD">KEY_IDX_STB_FORWARD</option>
+            <option value="KEY_IDX_STB_GREEN">KEY_IDX_STB_GREEN</option>
+            <option value="KEY_IDX_STB_GUIDE">KEY_IDX_STB_GUIDE</option>
+            <option value="KEY_IDX_STB_LEFT">KEY_IDX_STB_LEFT</option>
+            <option value="KEY_IDX_STB_MENU">KEY_IDX_STB_MENU</option>
+            <option value="KEY_IDX_STB_NUM0">KEY_IDX_STB_NUM0</option>
+            <option value="KEY_IDX_STB_NUM1">KEY_IDX_STB_NUM1</option>
+            <option value="KEY_IDX_STB_NUM2">KEY_IDX_STB_NUM2</option>
+            <option value="KEY_IDX_STB_NUM3">KEY_IDX_STB_NUM3</option>
+            <option value="KEY_IDX_STB_NUM4">KEY_IDX_STB_NUM4</option>
+            <option value="KEY_IDX_STB_NUM5">KEY_IDX_STB_NUM5</option>
+            <option value="KEY_IDX_STB_NUM6">KEY_IDX_STB_NUM6</option>
+            <option value="KEY_IDX_STB_NUM7">KEY_IDX_STB_NUM7</option>
+            <option value="KEY_IDX_STB_NUM8">KEY_IDX_STB_NUM8</option>
+            <option value="KEY_IDX_STB_NUM9">KEY_IDX_STB_NUM9</option>
+            <option value="KEY_IDX_STB_OK">KEY_IDX_STB_OK</option>
+            <option value="KEY_IDX_STB_PAUSE">KEY_IDX_STB_PAUSE</option>
+            <option value="KEY_IDX_STB_PLAY">KEY_IDX_STB_PLAY</option>
+            <option value="KEY_IDX_STB_POWER_ONOFF">KEY_IDX_STB_POWER_ONOFF</option>
+            <option value="KEY_IDX_STB_REC">KEY_IDX_STB_REC</option>
+            <option value="KEY_IDX_STB_RED">KEY_IDX_STB_RED</option>
+            <option value="KEY_IDX_STB_REWIND">KEY_IDX_STB_REWIND</option>
+            <option value="KEY_IDX_STB_RIGHT">KEY_IDX_STB_RIGHT</option>
+            <option value="KEY_IDX_STB_SKIP_BACKWARD">KEY_IDX_STB_SKIP_BACKWARD</option>
+            <option value="KEY_IDX_STB_SKIP_FORWARD">KEY_IDX_STB_SKIP_FORWARD</option>
+            <option value="KEY_IDX_STB_STOP">KEY_IDX_STB_STOP</option>
+            <option value="KEY_IDX_STB_UP">KEY_IDX_STB_UP</option>
+            <option value="KEY_IDX_STB_YELLOW">KEY_IDX_STB_YELLOW</option>
+            <option value="KEY_IDX_STOP">KEY_IDX_STOP</option>
+            <option value="KEY_IDX_VOL_DOWN">KEY_IDX_VOL_DOWN</option>
+            <option value="KEY_IDX_VOL_UP">KEY_IDX_VOL_UP</option>
+            <option value="KEY_IDX_YELLOW">KEY_IDX_YELLOW</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-repeat"><i class="fa fa-repeat"></i> Repeat</label>
+        <input type="text" id="node-input-repeat" class="ui-spinner-input" style="text-align:end; width:50px !important" autocomplete="off" role="spinbutton">
     </div>
 </script>
 
@@ -46,3 +209,4 @@
         </ul>
     </p>
 </script>
+

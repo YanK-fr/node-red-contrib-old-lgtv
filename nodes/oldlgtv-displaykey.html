@@ -1,0 +1,31 @@
+<script type="text/javascript">
+    RED.nodes.registerType('oldlgtv-displaykey', {
+        category: 'oldlgtv',
+        color: '#C0DEED',
+        inputs: 1,
+        outputs: 1,
+        defaults: {
+            tv: {
+                value: '',
+                type: 'oldlgtv-config',
+                required: true
+            }
+        },
+        label: function () {
+            return 'Display Key';
+        },
+        icon: 'oldlgtv-displaykey.png',
+        paletteLabel: 'Display Key',
+        align: 'right'
+    });
+</script>
+
+<script type="text/x-red" data-template-name="oldlgtv-displaykey">
+    <div class="form-row">
+        <label for="node-input-tv"><i class="fa fa-television"></i> TV</label>
+        <input type="text" id="node-input-tv">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="oldlgtv-displaykey">
+</script>
